@@ -1,11 +1,34 @@
-import { Image, ScrollView, Text, TextInput, View } from "react-native";
+import { Alert, Image, ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./Login.styles";
 import { Menu, Scroll } from "lucide-react-native";
 import { rootStyles } from "../../styles/styles";
 import { ButtonSecondary } from "../../components/Buttons/Buttons";
+import { useState } from "react";
 
 export function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    function handleLogin() {
+        if (!email.trim() || !password.trim()) {
+            Alert.alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        if (!email.includes("@") || !email.includes(".")) {
+            Alert.alert("Por favor, insira um e-mail válido.");
+            return;
+        }
+
+        if (password.length < 6) {
+            Alert.alert("A senha deve ter pelo menos 6 caracteres.");
+            return;
+        }
+
+        Alert.alert("Login bem-sucedido!");
+    }
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -27,16 +50,21 @@ export function Login() {
                                 <Text style={styles.loginDataTitle}>Dados de login</Text>
                                 <TextInput
                                     style={styles.inputField}
-                                    placeholder="E-mail ou CPF"
+                                    placeholder="E-mail"
+                                    value={email}
+                                    onChangeText={setEmail}
                                 />
                                 <TextInput
                                     style={styles.inputField}
                                     placeholder="Senha"
+                                    secureTextEntry
+                                    value={password}
+                                    onChangeText={setPassword}
                                 />
                                 <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
 
                                 <View style={styles.loginButtonContainer}>
-                                    <ButtonSecondary text="Acessar minha conta" />
+                                    <ButtonSecondary text="Acessar minha conta" onPress={handleLogin} />
                                 </View>
 
                                 <Text style={styles.registerText}>Não possui uma conta?
