@@ -5,10 +5,12 @@ import { Menu, Scroll } from "lucide-react-native";
 import { rootStyles } from "../../styles/styles";
 import { ButtonSecondary } from "../../components/Buttons/Buttons";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigation = useNavigation();
 
     function handleLogin() {
         if (!email.trim() || !password.trim()) {
@@ -64,7 +66,7 @@ export function Login() {
                                 <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
 
                                 <View style={styles.loginButtonContainer}>
-                                    <ButtonSecondary text="Acessar minha conta" onPress={handleLogin} />
+                                    <ButtonSecondary text="Acessar minha conta" onPress={() => navigation.navigate("Home")} />
                                 </View>
 
                                 <Text style={styles.registerText}>Não possui uma conta?
