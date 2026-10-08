@@ -4,11 +4,11 @@ import { rootStyles } from "../../styles/styles";
 export const styles = StyleSheet.create({
 	safeArea: {
 		flex: 1,
-		backgroundColor: rootStyles.bg,
 	},
 
 	scrollContent: {
 		flexGrow: 1,
+		backgroundColor: rootStyles.bg
 	},
 
 	container: {

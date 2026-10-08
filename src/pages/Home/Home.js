@@ -3,8 +3,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowUpRight, CreditCard, Menu, PiggyBank, Wallet } from "lucide-react-native";
 import { rootStyles } from "../../styles/styles";
 import { styles } from "./Home.styles";
+import { Footer } from "../../components/Footer/Footer";
 
-export function Home() {
+export function Home({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -70,6 +71,7 @@ export function Home() {
                     </View>
                 </View>
             </ScrollView>
+            <Footer navigation={navigation} currentRoute="Home" />
         </SafeAreaView>
     )
 }
