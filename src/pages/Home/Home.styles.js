@@ -159,7 +159,7 @@ export const styles = StyleSheet.create({
 
 	listCard: {
 		paddingHorizontal: 9,
-		paddingVertical: 5,
+		paddingVertical: 8,
 		borderWidth: 1,
 		borderColor: rootStyles.greyLight,
 		borderRadius: 9,
@@ -169,71 +169,5 @@ export const styles = StyleSheet.create({
 		shadowOpacity: 0.14,
 		shadowRadius: 3,
 		elevation: 3,
-	},
-
-	listRow: {
-		minHeight: 43,
-		flexDirection: "row",
-		justifyContent: "space-between",
-		alignItems: "center",
-	},
-
-	rowDivider: {
-		borderBottomWidth: 1,
-		borderBottomColor: rootStyles.greyLight,
-	},
-
-	rowDetails: {
-		flex: 1,
-		flexDirection: "row",
-		alignItems: "center",
-		minWidth: 0,
-	},
-
-	iconBox: {
-		width: 25,
-		height: 25,
-		marginRight: 8,
-		alignItems: "center",
-		justifyContent: "center",
-		borderRadius: 4,
-		backgroundColor: rootStyles.surfaceMuted,
-	},
-
-	rowLabel: {
-		fontSize: 10,
-		color: rootStyles.greyDark,
-		fontFamily: rootStyles.poppinsRegular,
-	},
-
-	rowAmount: {
-		marginLeft: 6,
-		fontSize: 10,
-		textAlign: "right",
-		fontFamily: rootStyles.poppinsMedium,
-	},
-
-	positive: {
-		color: rootStyles.positive,
-	},
-
-	negative: {
-		color: rootStyles.negative,
-	},
-
-	transactionRow: {
-		minHeight: 44,
-	},
-
-	transactionSymbol: {
-		fontSize: 13,
-		color: rootStyles.grey,
-		fontFamily: rootStyles.poppinsMedium,
-	},
-
-	transactionDate: {
-		fontSize: 10,
-		color: rootStyles.greyMuted,
-		fontFamily: rootStyles.poppinsRegular,
 	},
 });

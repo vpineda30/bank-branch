@@ -9,13 +9,13 @@ export const transacoes = [
     id: 2,
     nome: "Netflix",
     valor: 39.9,
-    data: "07/10/2026",
+    data: "08/10/2026",
   },
   {
     id: 3,
     nome: "Posto de combustível",
     valor: 120.0,
-    data: "06/10/2026",
+    data: "08/10/2026",
   },
   {
     id: 4,
@@ -27,7 +27,7 @@ export const transacoes = [
     id: 5,
     nome: "Farmácia",
     valor: 45.8,
-    data: "04/10/2026",
+    data: "05/10/2026",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const transacoes = [
     id: 10,
     nome: "Padaria",
     valor: 18.5,
-    data: "29/09/2026",
+    data: "30/09/2026",
   },
 ];
 

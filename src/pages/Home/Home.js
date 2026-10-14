@@ -4,8 +4,13 @@ import { ArrowUpRight, CreditCard, Menu, PiggyBank, Wallet } from "lucide-react-
 import { rootStyles } from "../../styles/styles";
 import { styles } from "./Home.styles";
 import { Footer } from "../../components/Footer/Footer";
+import { TransactionRow } from "../../components/TransactionCard/TransactionCard";
+import { SummaryRow } from "../../components/SummaryRow/SummaryRow";
+import { transacoes } from "../../data/data";
 
 export function Home({ navigation }) {
+    const recentTransactions = transacoes.slice(0, 3);
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -54,55 +59,36 @@ export function Home({ navigation }) {
                         <Text style={styles.sectionTitle}>Resumo do mês</Text>
                         <Text style={styles.seeAll}>Ver tudo</Text>
                     </View>
+
                     <View style={styles.listCard}>
                         <SummaryRow icon={Wallet} label="Receitas" amount="+ R$ 3.540,00" type="positive" />
                         <SummaryRow icon={CreditCard} label="Despesas" amount="- R$ 1.430,00" type="negative" />
                         <SummaryRow icon={PiggyBank} label="Economizado" amount="+ R$ 1.128,00" type="positive" last />
                     </View>
-
                     <View style={styles.sectionHeading}>
                         <Text style={styles.sectionTitle}>Transações Recentes</Text>
-                        <Text style={styles.seeAll}>Ver tudo</Text>
+                        <TouchableOpacity
+                            accessibilityRole="button"
+                            onPress={() => navigation.navigate("Transactions")}
+                        >
+                            <Text style={styles.seeAll}>Ver tudo</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.listCard}>
-                        <TransactionRow label="Salário" date="5 mai." amount="+ R$ 3.540,00" type="positive" />
-                        <TransactionRow label="Mercado" date="30 Abr." amount="- R$ 630,00" type="negative" />
-                        <TransactionRow label="Transporte" date="30 Abr." amount="- R$ 72,00" type="negative" last />
+                        {recentTransactions.map((transaction, index) => (
+                            <TransactionRow
+                                key={transaction.id}
+                                label={transaction.nome}
+                                date={transaction.data}
+                                amount={`- ${transaction.valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
+                                type="negative"
+                                last={index === recentTransactions.length - 1}
+                            />
+                        ))}
                     </View>
                 </View>
             </ScrollView>
             <Footer navigation={navigation} currentRoute="Home" />
         </SafeAreaView>
-    )
-}
-
-function SummaryRow({ icon: Icon, label, amount, type, last }) {
-    return (
-        <View style={[styles.listRow, !last && styles.rowDivider]}>
-            <View style={styles.rowDetails}>
-                <View style={styles.iconBox}>
-                    <Icon size={14} color={rootStyles.grey} />
-                </View>
-                <Text style={styles.rowLabel}>{label}</Text>
-            </View>
-            <Text style={[styles.rowAmount, type === "positive" ? styles.positive : styles.negative]}>{amount}</Text>
-        </View>
-    )
-}
-
-function TransactionRow({ label, date, amount, type, last }) {
-    return (
-        <View style={[styles.listRow, styles.transactionRow, !last && styles.rowDivider]}>
-            <View style={styles.rowDetails}>
-                <View style={styles.iconBox}>
-                    <Text style={styles.transactionSymbol}>$</Text>
-                </View>
-                <View>
-                    <Text style={styles.rowLabel}>{label}</Text>
-                    <Text style={styles.transactionDate}>{date}</Text>
-                </View>
-            </View>
-            <Text style={[styles.rowAmount, type === "positive" ? styles.positive : styles.negative]}>{amount}</Text>
-        </View>
     )
 }

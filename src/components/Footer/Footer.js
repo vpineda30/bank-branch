@@ -17,7 +17,7 @@ const menuItems = [
   {
     label: "Transações",
     icon: DollarSign,
-    route: "Gastos",
+    route: "Transactions",
   },
   {
     label: "Planejamentos",
@@ -46,7 +46,7 @@ export function Footer({ navigation, currentRoute }) {
             onPress={() => navigation.navigate(item.route)}
           >
             <Icon
-              size={22}
+              size={20}
               color={active ? "#202020" : "#555"}
               strokeWidth={active ? 2.2 : 1.8}
             />

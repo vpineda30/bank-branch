@@ -5,9 +5,10 @@ export const styles = StyleSheet.create({
   footer: {
     height: 90,
     backgroundColor: rootStyles.bg,
-    flexDirection: "row",
+    display: "flex",
+    justifyContent: "space-around",
     alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: "row",
     borderTopWidth: 1,
     borderTopColor: "#C8C8C8",
   },
@@ -16,11 +17,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 3,
+    gap: 2,
   },
 
   label: {
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: "500",
     color: "#202020",
   },
